@@ -1,0 +1,20 @@
+trigger:
+  - master
+pr:
+  - master
+jobs:
+  - job: 'ubuntu'
+    displayName: 'Ubuntu Build'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: yarn
+      displayName: 'Grab dependencies'
+    - script: yarn test
+      displayName: 'Tests'
+    - script: yarn build
+      displayName: 'Bundle'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: dist
+        artifactName: drop
