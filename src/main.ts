@@ -1,10 +1,18 @@
 // Copyright (c) 2020 Patrick S. Worthey
+/**
+ * This file contains the main program entry point.
+ */
 
 import { formatNumber } from './func';
 import fetch, { Response } from 'node-fetch';
 
 const url = 'https://translifeline.org/hiring_stats_sample';
 
+/**
+ * Attempts to log the formatted number from the response upon completion.
+ * 
+ * @param response The successful HTTP response with a JSON payload
+ */
 async function onFetchSuccess(response: Response) {
   try {
     const jsonObj = await response.json();
@@ -18,6 +26,7 @@ async function onFetchSuccess(response: Response) {
       return;
     }
 
+    // This is the meat of it right here. Check out the implementation.
     const result = formatNumber(jsonObj.answered);
     console.log(`Result is: "${result}".`);
   }
@@ -26,6 +35,9 @@ async function onFetchSuccess(response: Response) {
   }
 }
 
+/**
+ * The main entry point for the program. Begins the fetch request.
+ */
 async function main() {
   try {
     const response = await fetch(url);
