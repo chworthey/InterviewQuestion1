@@ -1,7 +1,5 @@
 trigger:
   - master
-pr:
-  - master
 jobs:
   - job: 'ubuntu'
     displayName: 'Ubuntu Build'
