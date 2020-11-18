@@ -1,7 +1,14 @@
 // Copyright (c) 2020 Patrick S. Worthey
+/**
+ * This file contains unit tests, integrated with Jest.
+ */
 
 import { formatNumber } from './func';
 
+/**
+ * Unit tests the formatNumber() function with a slew
+ * of numbers that appear differently when converted to strings.
+ */
 test('Test comma delimited numbers.', () => {
   const tests: [number, string][] = [
     [1, '1'],
